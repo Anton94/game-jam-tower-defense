@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://co0rdnv4yehse"]
+[gd_scene load_steps=4 format=3 uid="uid://co0rdnv4yehse"]
 
 [ext_resource type="Script" path="res://maps/spawner/spawner.gd" id="1_rv4gn"]
+[ext_resource type="Texture2D" uid="uid://cem1rurn6jb7s" path="res://assets/objective/objective_die_28.png" id="2_eg75s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn0r2"]
+atlas = ExtResource("2_eg75s")
+region = Rect2(61, 77, 451, 400)
 
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_rv4gn")
@@ -9,9 +14,21 @@ script = ExtResource("1_rv4gn")
 
 [node name="SpawnLocation1" type="Marker2D" parent="SpawnContainer"]
 
+[node name="Sprite2D" type="Sprite2D" parent="SpawnContainer/SpawnLocation1"]
+modulate = Color(0.847059, 0.537255, 0.352941, 1)
+texture = SubResource("AtlasTexture_pn0r2")
+
 [node name="SpawnLocation2" type="Marker2D" parent="SpawnContainer"]
 
+[node name="Sprite2D" type="Sprite2D" parent="SpawnContainer/SpawnLocation2"]
+modulate = Color(0.847059, 0.537255, 0.352941, 1)
+texture = SubResource("AtlasTexture_pn0r2")
+
 [node name="SpawnLocation3" type="Marker2D" parent="SpawnContainer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="SpawnContainer/SpawnLocation3"]
+modulate = Color(0.847059, 0.537255, 0.352941, 1)
+texture = SubResource("AtlasTexture_pn0r2")
 
 [node name="WaveTimer" type="Timer" parent="."]
 wait_time = 5.0
