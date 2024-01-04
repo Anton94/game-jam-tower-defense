@@ -1,1 +1,2 @@
 - Refine the zooming. I think that the game feeling is better when you can see the whole fighting, not just a small square, so I increased the zoom out max value and fixed the zoom in to be to the mouse location
+- Add bomb animation and die animation to the infantry units - they are kamikaze

@@ -16,6 +16,8 @@ signal enemy_removed # emitted when enemy dies or reaches objective
 @onready var collision_shape := $CollisionShape2D as CollisionShape2D
 @onready var default_sound := $DefaultSound as AudioStreamPlayer2D
 @onready var hud := $UI/EntityHUD as EntityHUD
+@onready var hit_vfx := $HitVfx as AnimatedSprite2D
+@onready var hit_sound := $HitSound as AudioStreamPlayer2D
 
 func _ready() -> void:
 	var objective: Node2D = $/root/Map/Objective
@@ -78,6 +80,11 @@ func die() -> void:
 	default_sound.stop()
 	enemy_died.emit(self)
 
+func explode() -> void:
+	hit_vfx.show()
+	hit_vfx.play("hit")
+	hit_sound.play()
+	die()
 
 func _on_animated_sprite_2d_animation_finished():
 	if anim_sprite.animation == "die":

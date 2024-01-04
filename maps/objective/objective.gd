@@ -23,8 +23,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Infantry:
 		var infantry = body as Infantry
 		health -= infantry.objective_damage
-		infantry.enemy_removed.emit()
-		infantry.queue_free()
+		infantry.explode()
 
 
 func _on_animated_sprite_2d_animation_finished():
