@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://carh6bbm1af4b" path="res://ui/hud.tscn" id="2_u2kdw"]
 
 [node name="Camera2D" type="Camera2D"]
+position_smoothing_enabled = true
 script = ExtResource("1_msh2n")
 
 [node name="HUD" parent="." instance=ExtResource("2_u2kdw")]
