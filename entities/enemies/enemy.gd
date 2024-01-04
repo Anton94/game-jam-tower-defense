@@ -73,18 +73,21 @@ func play_animation(anim_name: String) -> void:
 
 
 func die() -> void:
+	die_visual_effect()
+	enemy_died.emit(self)
+
+func die_visual_effect() -> void:
 	collision_shape.set_deferred("disabled", true)
 	speed = 0
 	nav_agent.set_velocity(Vector2.ZERO)
 	anim_sprite.play("die")
 	default_sound.stop()
-	enemy_died.emit(self)
 
 func explode() -> void:
 	hit_vfx.show()
 	hit_vfx.play("hit")
 	hit_sound.play()
-	die()
+	die_visual_effect()
 
 func _on_animated_sprite_2d_animation_finished():
 	if anim_sprite.animation == "die":
