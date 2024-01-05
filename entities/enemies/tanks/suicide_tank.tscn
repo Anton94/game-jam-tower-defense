@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3kdk2ht8bl7u"]
+
+[ext_resource type="PackedScene" uid="uid://cv0ejciwmt5wv" path="res://entities/enemies/tanks/tank.tscn" id="1_p03g8"]
+[ext_resource type="Script" path="res://entities/enemies/tanks/suicide_tank.gd" id="2_paeek"]
+
+[node name="SuicideTank" instance=ExtResource("1_p03g8")]
+collision_layer = 288
+script = ExtResource("2_paeek")
+objective_damage = 20
+kill_reward = 100
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+modulate = Color(0.780392, 0.431373, 0.176471, 1)
+
+[editable path="Shooter"]

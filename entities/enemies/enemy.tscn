@@ -67,6 +67,9 @@ script = ExtResource("1_yc04v")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 1, 1)
+debug_path_custom_line_width = 3.25
 
 [node name="DefaultSound" type="AudioStreamPlayer2D" parent="."]
 autoplay = true

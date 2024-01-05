@@ -1,5 +1,5 @@
-class_name SuicideCraft
-extends Helicopter
+class_name SuicideTank
+extends Tank
 
 @export var objective_damage := 20
 
@@ -8,10 +8,6 @@ func _ready():
 	shooter.queue_free()
 	shooter = null
 	super._ready()
-
-func _process(_delta: float) -> void:
-	rotor.global_rotation = anim_sprite.global_rotation
-	shadow.global_rotation = anim_sprite.global_rotation
 
 func explode():
 	$Explosion/AnimationPlayer.play("default_explosion")

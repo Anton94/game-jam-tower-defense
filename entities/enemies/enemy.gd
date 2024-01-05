@@ -96,7 +96,7 @@ func die_visual_effect() -> void:
 	anim_sprite.play("die")
 	default_sound.stop()
 
-func explode() -> void:
+func default_explosion() -> void:
 	hit_vfx.show()
 	hit_vfx.play("hit")
 	hit_sound.play()
