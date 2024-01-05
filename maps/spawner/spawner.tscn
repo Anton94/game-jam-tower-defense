@@ -18,17 +18,29 @@ script = ExtResource("1_rv4gn")
 modulate = Color(0.847059, 0.537255, 0.352941, 1)
 texture = SubResource("AtlasTexture_pn0r2")
 
+[node name="InitialDirections" type="Node2D" parent="SpawnContainer/SpawnLocation1"]
+
+[node name="InitialDirection1" type="Marker2D" parent="SpawnContainer/SpawnLocation1/InitialDirections"]
+
 [node name="SpawnLocation2" type="Marker2D" parent="SpawnContainer"]
 
 [node name="Sprite2D" type="Sprite2D" parent="SpawnContainer/SpawnLocation2"]
 modulate = Color(0.847059, 0.537255, 0.352941, 1)
 texture = SubResource("AtlasTexture_pn0r2")
 
+[node name="InitialDirections" type="Node2D" parent="SpawnContainer/SpawnLocation2"]
+
+[node name="InitialDirection1" type="Marker2D" parent="SpawnContainer/SpawnLocation2/InitialDirections"]
+
 [node name="SpawnLocation3" type="Marker2D" parent="SpawnContainer"]
 
 [node name="Sprite2D" type="Sprite2D" parent="SpawnContainer/SpawnLocation3"]
 modulate = Color(0.847059, 0.537255, 0.352941, 1)
 texture = SubResource("AtlasTexture_pn0r2")
+
+[node name="InitialDirections" type="Node2D" parent="SpawnContainer/SpawnLocation3"]
+
+[node name="InitialDirection1" type="Marker2D" parent="SpawnContainer/SpawnLocation3/InitialDirections"]
 
 [node name="WaveTimer" type="Timer" parent="."]
 wait_time = 5.0

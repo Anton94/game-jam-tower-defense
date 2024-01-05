@@ -1,4 +1,15 @@
-- Refine the zooming. I think that the game feeling is better when you can see the whole fighting, not just a small square, so I increased the zoom out max value and fixed the zoom in to be to the mouse location
-- Added bomb animation and die animation to the infantry units - they are kamikaze
-- Added spawn buildings and proper Z index for the enemies
+- Refine the zooming. I think that the game feeling is better when you can see the whole fighting, not just a small square, so I increased the zoom out max value and fixed the zoom in to be to the mouse location. Extended the map, so the zoom out does not show the void around the map.
+- Added bomb animation and die animation to the infantry units - they are kamikaze.
+- Added spawn buildings and proper Z index for the enemies to seem like they are getting out of them. Adjust the map for that.
+- Added different initial directions for the enemies to follow to the objective. That way all paths of the map are used.
 - TODO utilize the bottom line - enemies to go through there
+- TODO suiside bomber with different color helicopter which targets only the base
+- TODO waves to wait for all enemies from the current one to die before starting a new one
+- TDOO fix the zoom out to not show the void outside of the map(when near the borders)
+- TODO purchase tower slot
+- TODO rebuild the base with button next to helath bar
+- TODO upgrade the towers - speed of firing, damage of shells
+- TODO add new type of tower - change color of one of them and make it shoot both - infantry and tanks, make it more expensive
+- TODO statistics on exit screen for how many units have been killed
+
+- TODO (optional) custom rockets as special powers on the map with countdown and upgrade them - probably too much work for now

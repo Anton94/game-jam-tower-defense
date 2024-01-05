@@ -56,7 +56,14 @@ func _end_wave():
 func _spawn_new_enemy(enemy_name: String):
 	var enemy: Enemy = enemy_scenes[enemy_name].instantiate()
 	get_parent().add_child(enemy)
-	var spawn_marker = spawn_locations.pick_random()
+	var spawn_marker: Node2D = spawn_locations.pick_random()
+
+	var initial_spawner_directions = spawn_marker.get_node("InitialDirections").get_children()
+	var initial_direction: Node2D = initial_spawner_directions.pick_random()
+	var objective: Node2D = $/root/Map/Objective
+	var enemy_path_targets: Array = [initial_direction.global_position, objective.global_position]
+
+	enemy.set_targets(enemy_path_targets)
 	enemy.global_position = spawn_marker.global_position
 	current_enemy_count += 1
 	enemy_spawned.emit(enemy)

@@ -19,9 +19,22 @@ signal enemy_removed # emitted when enemy dies or reaches objective
 @onready var hit_vfx := $HitVfx as AnimatedSprite2D
 @onready var hit_sound := $HitSound as AudioStreamPlayer2D
 
+var navigation_targets : Array = []
+
+func set_targets(targets : Array):
+	navigation_targets = targets
+	navigate_to_next_target()
+
+func navigate_to_next_target():
+	if navigation_targets.is_empty():
+		return
+	nav_agent.set_target_position(navigation_targets.front())
+	navigation_targets.pop_front()
+
+func _on_navigation_agent_2d_navigation_finished():
+	navigate_to_next_target()
+
 func _ready() -> void:
-	var objective: Node2D = $/root/Map/Objective
-	nav_agent.set_target_position(objective.global_position)
 	nav_agent.max_speed = speed
 	
 	hud.health_bar.max_value = health
