@@ -2,8 +2,7 @@
 - Added bomb animation and die animation to the infantry units - they are kamikaze.
 - Added spawn buildings and proper Z index for the enemies to seem like they are getting out of them. Adjust the map for that.
 - Added different initial directions for the enemies to follow to the objective. That way all paths of the map are used.
-- TODO utilize the bottom line - enemies to go through there
-- TODO suiside bomber with different color helicopter which targets only the base
+- Added suiside bomber with different color helicopter which targets only the base.
 - TODO waves to wait for all enemies from the current one to die before starting a new one
 - TDOO fix the zoom out to not show the void outside of the map(when near the borders)
 - TODO purchase tower slot

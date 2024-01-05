@@ -13,7 +13,8 @@ signal enemies_defeated
 	"infantry": 50,
 	"infantry2": 30,
 	"tank": 20,
-	"helicopter": 5,
+	"helicopter": 55,
+	"suicide_craft": 55,
 }
 
 
@@ -22,6 +23,7 @@ var enemy_scenes := {
 	"infantry2": preload("res://entities/enemies/infantry/infantry_t2.tscn"),
 	"tank": preload("res://entities/enemies/tanks/tank.tscn"),
 	"helicopter": preload("res://entities/enemies/helicopters/helicopter.tscn"),
+	"suicide_craft": preload("res://entities/enemies/helicopters/suicide_craft.tscn"),
 }
 var spawn_locations := []
 var current_wave := 0

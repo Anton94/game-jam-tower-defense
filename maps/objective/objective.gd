@@ -4,7 +4,7 @@ extends Area2D
 signal health_changed(health: int)
 signal objective_destroyed
 
-@export var health := 500:
+@export var health := 700:
 	set = set_health
 	
 @onready var collision_shape := $CollisionShape2D as CollisionShape2D
@@ -24,7 +24,10 @@ func _on_body_entered(body: Node2D) -> void:
 		var infantry = body as Infantry
 		health -= infantry.objective_damage
 		infantry.explode()
-
+	if body is SuicideCraft:
+		var suicide_craft = body as SuicideCraft
+		health -= suicide_craft.objective_damage
+		suicide_craft.explode()
 
 func _on_animated_sprite_2d_animation_finished():
 	if anim_sprite.animation == "die":

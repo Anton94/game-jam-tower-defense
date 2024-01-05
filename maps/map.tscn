@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b4bsgajdug3qc"]
+[gd_scene load_steps=28 format=3 uid="uid://b4bsgajdug3qc"]
 
 [ext_resource type="Script" path="res://maps/map.gd" id="1_dh14p"]
 [ext_resource type="Texture2D" uid="uid://d06ljw7ag2tes" path="res://assets/tiles/field_tilesheet.png" id="1_vqxpx"]
@@ -255,8 +255,6 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-262, -771, -257, 4351, 4741, 4349, 4734, -766)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
-[sub_resource type="Curve2D" id="Curve2D_fcq4a"]
-
 [node name="Map" type="Node2D"]
 script = ExtResource("1_dh14p")
 
@@ -305,7 +303,6 @@ position = Vector2(2161, 466)
 
 [node name="InitialDirection2" type="Marker2D" parent="Spawner/SpawnContainer/SpawnLocation2/InitialDirections" index="1"]
 position = Vector2(1136, -559)
-scale = Vector2(1, 1)
 
 [node name="SpawnLocation3" parent="Spawner/SpawnContainer" index="2"]
 position = Vector2(199, 3862)
@@ -319,7 +316,6 @@ position = Vector2(2060, -1094)
 
 [node name="InitialDirection2" type="Marker2D" parent="Spawner/SpawnContainer/SpawnLocation3/InitialDirections" index="1"]
 position = Vector2(3772, -433)
-scale = Vector2(1, 1)
 
 [node name="WaveTimer" parent="Spawner" index="1"]
 wait_time = 5.0
@@ -373,11 +369,7 @@ position = Vector2(2900, 1872)
 position = Vector2(3474, 698)
 
 [node name="AircraftNavRegion" type="NavigationRegion2D" parent="."]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_nxq2u")
 navigation_layers = 2
-
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_fcq4a")
 
 [editable path="Spawner"]

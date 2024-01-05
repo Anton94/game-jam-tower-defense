@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Outpost Assault"
-run/main_scene="res://ui/main_menu.tscn"
+run/main_scene="res://maps/map.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -40,5 +40,6 @@ theme/custom="res://ui/ui_theme.tres"
 2d_physics/layer_5="objective"
 2d_physics/layer_6="tank"
 2d_physics/layer_7="helicopter"
+2d_physics/layer_8="suicide_craft"
 avoidance/layer_1="ground"
 avoidance/layer_2="air"
