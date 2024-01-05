@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://entities/enemies/helicopters/suicide_craft.gd" id="2_2nen7"]
 
 [node name="SuicideCraft" instance=ExtResource("1_7n126")]
-collision_layer = 192
+collision_layer = 128
 script = ExtResource("2_2nen7")
 objective_damage = 20
 

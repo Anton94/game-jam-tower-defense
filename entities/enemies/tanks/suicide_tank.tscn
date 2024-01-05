@@ -12,4 +12,10 @@ kill_reward = 100
 [node name="AnimatedSprite2D" parent="." index="0"]
 modulate = Color(0.780392, 0.431373, 0.176471, 1)
 
+[node name="Shoot" parent="StateMachine" index="2"]
+script = null
+
+[node name="ShootStationary" parent="StateMachine" index="3"]
+script = null
+
 [editable path="Shooter"]
