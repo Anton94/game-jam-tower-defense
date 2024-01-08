@@ -4,6 +4,10 @@ const PRICE_LABEL_PATH := "UI/TowerPopup/Background/Panel/Towers/%s/Label"
 
 @onready var tower_popup := $UI/TowerPopup as CanvasLayer
 @onready var tower_actions := $UI/TowerActions as VBoxContainer
+@onready var repair_cost := $UI/TowerActions/Repair/Cost as Label
+@onready var upgrade_cost := $UI/TowerActions/Upgrade/Cost as Label
+@onready var exchange_cost := $UI/TowerActions/Exchange/Cost as Label
+@onready var sell_cost := $UI/TowerActions/Sell/Cost as Label
 
 var _towers_to_build := {
 	"gatling": preload("res://entities/towers/gatling_tower.tscn"),
@@ -17,6 +21,26 @@ func _ready():
 		var price_label := get_node(PRICE_LABEL_PATH % [tower_name.capitalize()]) as Label
 		price_label.text = str(Global.tower_costs[tower_name])
 
+func _process(_dt: float) -> void:
+	if tower:
+		repair_cost.text = str(get_repair_cost())
+		upgrade_cost.text = str(get_upgrade_cost())
+		exchange_cost.text = str(get_sell_price())
+		sell_cost.text = str(get_sell_price())
+
+func get_sell_price() -> int:
+	var tower_cost: int = tower.cost
+	var remaining_health_pct: float = float(tower.health) / tower.max_health
+	return floor(tower_cost * remaining_health_pct)
+
+func get_repair_cost() -> int:
+	var tower_cost: int =  Global.tower_costs[tower.tower_type]
+	var missing_health_pct: float = float(tower.max_health - tower.health) / tower.max_health
+	return floor(tower_cost * missing_health_pct)
+
+func get_upgrade_cost() -> int:
+	var base_tower_cost = Global.tower_costs[tower.tower_type]
+	return base_tower_cost * tower.current_upgrade_multiplier
 
 func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and \
@@ -63,37 +87,29 @@ func _on_tower_destroyed():
 	tower_actions.visible = false
 
 func _on_repair_pressed():
-	var tower_cost: int =  Global.tower_costs[tower.tower_type]
-	var missing_health_pct: float = float(tower.max_health - tower.health) / tower.max_health
-	var repair_cost: int = floor(tower_cost * missing_health_pct)
-	if repair_cost <= Global.money:
+	var cost = get_repair_cost()
+	if cost <= Global.money:
 		tower.repair()
-		Global.money -= repair_cost
+		Global.money -= cost
 		tower_actions.visible = false
 	else:
 		var repair_btn := tower_actions.get_node("Repair") as Button
 		_flash_ui(repair_btn, "ff383f")
 
-
 func _on_exchange_pressed():
 	_on_sell_pressed()
 	tower_popup.show()
 
-
 func _on_sell_pressed():
-	var tower_cost: int = tower.cost
-	var remaining_health_pct: float = float(tower.health) / tower.max_health
-	var tower_value: int = floor(tower_cost * remaining_health_pct)
+	var tower_value = get_sell_price()
 	Global.money += tower_value
 	_reset_upgrades()
 	tower.queue_free()
 	tower_actions.visible = false
 	tower = null
 
-
 func _on_upgrade_pressed():
-	var base_tower_cost = Global.tower_costs[tower.tower_type]
-	var cost: int = base_tower_cost * tower.current_upgrade_multiplier
+	var cost = get_upgrade_cost()
 	if cost <= Global.money:
 		tower.upgrade(tower.base_upgrade_multiplier)
 		tower.cost += cost

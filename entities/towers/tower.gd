@@ -3,7 +3,7 @@ class_name Tower
 
 signal tower_destroyed
 
-@export_range(1, 1000) var health := 100.0:
+@export_range(1.0, 1000.0) var health := 100.0:
 	set = set_health
 @export var tower_type: String
 @export var detector_color := Color(0, 0, 1.0, 0.1)

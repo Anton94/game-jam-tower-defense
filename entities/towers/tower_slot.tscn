@@ -40,17 +40,53 @@ offset_bottom = 453.0
 layout_mode = 2
 icon = ExtResource("4_s6hwn")
 
+[node name="Cost" type="Label" parent="UI/TowerActions/Repair"]
+offset_left = 179.0
+offset_top = 37.0
+offset_right = 304.0
+offset_bottom = 116.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "1000"
+
 [node name="Upgrade" type="Button" parent="UI/TowerActions"]
 layout_mode = 2
 icon = ExtResource("5_ljul7")
+
+[node name="Cost" type="Label" parent="UI/TowerActions/Upgrade"]
+offset_left = 180.0
+offset_top = 38.0
+offset_right = 305.0
+offset_bottom = 117.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "1000"
 
 [node name="Exchange" type="Button" parent="UI/TowerActions"]
 layout_mode = 2
 icon = ExtResource("5_qshhm")
 
+[node name="Cost" type="Label" parent="UI/TowerActions/Exchange"]
+offset_left = 181.0
+offset_top = 47.0
+offset_right = 306.0
+offset_bottom = 126.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "1000"
+
 [node name="Sell" type="Button" parent="UI/TowerActions"]
 layout_mode = 2
 icon = ExtResource("6_r8luu")
+
+[node name="Cost" type="Label" parent="UI/TowerActions/Sell"]
+offset_left = 182.0
+offset_top = 45.0
+offset_right = 307.0
+offset_bottom = 124.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "1000"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="tower_requested" from="UI/TowerPopup" to="." method="_on_tower_popup_tower_requested"]

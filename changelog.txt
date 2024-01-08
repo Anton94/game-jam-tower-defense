@@ -6,11 +6,11 @@
 - Added suicide tanks.
 - Disabled suidice bombers. I have to make some better animation for it but I have no time for it.
 - Waves are waiting for all enemies from the current one to die before starting a new one.
-- Add upgrade option for the towers - increases the tower stats.
-- TODO add label with upgrade cost value
+- Added upgrade option for the towers - increases the tower stats.
+- Added cost/price labels for the tower upgrades/actions
 - TODO add new type of tower - change color of one of them and make it shoot both - infantry and tanks, make it more expensive
 - TODO statistics on exit screen for how many units have been killed
-- TODO Fix tower targeting suicide tanks
+- TODO Add winning screen.
 
 Not importnat:
 - TODO (optional) custom rockets as special powers on the map with countdown and upgrade them - probably too much work for now
