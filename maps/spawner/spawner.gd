@@ -12,10 +12,10 @@ signal enemies_defeated
 @export var spawn_probabilities := {
 	"infantry": 50,
 	"infantry2": 30,
-	"tank": 555,
+	"tank": 5,
 	"helicopter": 5,
 	"suicide_craft": 0,
-	"suicide_tank": 555,
+	"suicide_tank": 5,
 }
 
 
@@ -43,6 +43,9 @@ func _ready() -> void:
 	await owner.ready
 	countdown_started.emit(wave_timer.time_left)
 
+func _request_wave_start():
+	wave_timer.start()
+	countdown_started.emit(wave_timer.time_left)
 
 func _start_wave():
 	current_wave += 1
@@ -52,10 +55,7 @@ func _start_wave():
 
 
 func _end_wave():
-	if current_wave < wave_count:
-		wave_timer.start()
-		countdown_started.emit(wave_timer.time_left)
-
+	pass
 
 func _spawn_new_enemy(enemy_name: String):
 	var enemy: Enemy = enemy_scenes[enemy_name].instantiate()
@@ -76,7 +76,6 @@ func _spawn_new_enemy(enemy_name: String):
 
 func _on_wave_timer_timeout() -> void:
 	_start_wave()
-
 
 func _on_spawn_timer_timeout() -> void:
 	if current_enemy_count < enemies_per_wave_count:
@@ -103,5 +102,8 @@ func _pick_enemy() -> String:
 
 func _on_enemy_removed():
 	_enemy_removed_count += 1
+	
 	if _enemy_removed_count == wave_count * enemies_per_wave_count:
 		enemies_defeated.emit()
+	elif _enemy_removed_count == current_wave * enemies_per_wave_count:
+		_request_wave_start()

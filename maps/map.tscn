@@ -317,20 +317,17 @@ position = Vector2(2060, -1094)
 [node name="InitialDirection2" type="Marker2D" parent="Spawner/SpawnContainer/SpawnLocation3/InitialDirections" index="1"]
 position = Vector2(3772, -433)
 
-[node name="WaveTimer" parent="Spawner" index="1"]
-wait_time = 5.0
-
 [node name="TowerSlot" parent="." instance=ExtResource("8_l0hje")]
 position = Vector2(730, 1298)
 
 [node name="TowerSlot2" parent="." instance=ExtResource("8_l0hje")]
-position = Vector2(3786, 2788)
+position = Vector2(3773, 2801)
 
 [node name="TowerSlot3" parent="." instance=ExtResource("8_l0hje")]
 position = Vector2(3118, 1356)
 
 [node name="TowerSlot4" parent="." instance=ExtResource("8_l0hje")]
-position = Vector2(3228, 2067)
+position = Vector2(3610, 2101)
 
 [node name="TowerSlot5" parent="." instance=ExtResource("8_l0hje")]
 position = Vector2(762, 2468)
