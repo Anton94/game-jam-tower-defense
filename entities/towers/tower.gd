@@ -44,8 +44,12 @@ func upgrade(multiplier : float) -> void:
 	if shooter:
 		shooter.upgrade(multiplier)
 
-func set_health(value: int) -> void:
-	health = max(0, value)
+func set_health(value: float) -> void:
+	value = max(0, value)
+	if health == value:
+		return
+
+	health = value
 	if is_instance_valid(hud):
 		hud.health_bar.value = health
 	if health == 0:
