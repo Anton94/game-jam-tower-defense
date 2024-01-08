@@ -27,14 +27,12 @@ func _ready():
 	spawner.enemy_spawned.connect(_on_enemy_spawned)
 	spawner.enemies_defeated.connect(_on_enemies_defeated)
 
-	
 func _on_enemy_spawned(enemy: Enemy):
 	enemy.enemy_died.connect(_on_enemy_died)
 
 
 func _on_enemy_died(enemy: Enemy):
 	Global.money += enemy.kill_reward
-
 
 func _game_over():
 	var hud = camera.hud as HUD
@@ -43,9 +41,15 @@ func _game_over():
 	hud.get_node("Menus/Pause").queue_free()
 
 
+func _game_won():
+	var hud = camera.hud as HUD
+	hud.get_node("Menus/GameWon").enable()
+	# Prevent pausing during game over screen
+	hud.get_node("Menus/Pause").queue_free()
+
 func _on_objective_destroyed():
 	_game_over()
 
-
 func _on_enemies_defeated():
-	_game_over()
+	if objective.health > 0:
+		_game_won()

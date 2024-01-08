@@ -41,6 +41,7 @@ layout_mode = 2
 icon = ExtResource("4_s6hwn")
 
 [node name="Cost" type="Label" parent="UI/TowerActions/Repair"]
+layout_mode = 0
 offset_left = 179.0
 offset_top = 37.0
 offset_right = 304.0
@@ -54,6 +55,7 @@ layout_mode = 2
 icon = ExtResource("5_ljul7")
 
 [node name="Cost" type="Label" parent="UI/TowerActions/Upgrade"]
+layout_mode = 0
 offset_left = 180.0
 offset_top = 38.0
 offset_right = 305.0
@@ -67,6 +69,7 @@ layout_mode = 2
 icon = ExtResource("5_qshhm")
 
 [node name="Cost" type="Label" parent="UI/TowerActions/Exchange"]
+layout_mode = 0
 offset_left = 181.0
 offset_top = 47.0
 offset_right = 306.0
@@ -80,6 +83,7 @@ layout_mode = 2
 icon = ExtResource("6_r8luu")
 
 [node name="Cost" type="Label" parent="UI/TowerActions/Sell"]
+layout_mode = 0
 offset_left = 182.0
 offset_top = 45.0
 offset_right = 307.0

@@ -1,0 +1,127 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3iol3g32kdfa"]
+
+[ext_resource type="Script" path="res://ui/game_won.gd" id="1_5uhl5"]
+[ext_resource type="FontFile" uid="uid://casrdwkgfjccx" path="res://assets/ui/fonts/akashi.ttf" id="2_g5yt7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nb3hf"]
+font = ExtResource("2_g5yt7")
+font_size = 80
+font_color = Color(0.803922, 1, 0.392157, 1)
+
+[sub_resource type="Animation" id="Animation_27gmc"]
+resource_name = "show"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sections/Buttons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 1.5, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sections/Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6vaah"]
+_data = {
+"show": SubResource("Animation_27gmc")
+}
+
+[node name="GameWon" type="Panel"]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -240.0
+offset_right = 500.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(526, 270)
+script = ExtResource("1_5uhl5")
+
+[node name="Sections" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.5
+offset_top = -67.0
+offset_right = 183.5
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="Sections"]
+layout_mode = 2
+text = "YOU WON"
+label_settings = SubResource("LabelSettings_nb3hf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Sections"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 50
+
+[node name="Retry" type="Button" parent="Sections/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "RETRY"
+
+[node name="Exit" type="Button" parent="Sections/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "EXIT	"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6vaah")
+}
+
+[connection signal="pressed" from="Sections/Buttons/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Sections/Buttons/Exit" to="." method="_on_exit_pressed"]
