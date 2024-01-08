@@ -4,9 +4,10 @@
 - Added different initial directions for the enemies to follow to the objective. That way all paths of the map are used.
 - Added suiside bomber with different color helicopter which targets only the base.
 - Added suicide tanks.
+- Disabled suidice bombers. I have to make some better animation for it but I have no time for it.
 - Waves are waiting for all enemies from the current one to die before starting a new one.
-- TODO rebuild the base with button next to helath bar
-- TODO upgrade the towers - speed of firing, damage of shells
+- Add upgrade option for the towers - increases the tower stats.
+- TODO add label with upgrade cost value
 - TODO add new type of tower - change color of one of them and make it shoot both - infantry and tanks, make it more expensive
 - TODO statistics on exit screen for how many units have been killed
 - TODO Fix tower targeting suicide tanks

@@ -3,12 +3,16 @@ class_name Tower
 
 signal tower_destroyed
 
-@export_range(1, 1000) var health := 100:
+@export_range(1, 1000) var health := 100.0:
 	set = set_health
 @export var tower_type: String
 @export var detector_color := Color(0, 0, 1.0, 0.1)
 
-var max_health: int
+@export var current_upgrade_multiplier = 1.0
+@export var base_upgrade_multiplier := 1.2
+@export var cost := 0
+
+var max_health: float
 var _is_mouse_hovering := false
 
 @onready var collision := $CollisionShape2D as CollisionShape2D
@@ -33,6 +37,12 @@ func _draw() -> void:
 	if _is_mouse_hovering:
 		draw_circle(Vector2.ZERO, detector_shape.shape.radius, detector_color)
 
+func upgrade(multiplier : float) -> void:
+	max_health *= multiplier
+	current_upgrade_multiplier *= multiplier
+	set_health(health * multiplier)
+	if shooter:
+		shooter.upgrade(multiplier)
 
 func set_health(value: int) -> void:
 	health = max(0, value)
@@ -44,7 +54,6 @@ func set_health(value: int) -> void:
 		shooter.die()
 		$Explosion/AnimationPlayer.play("default_explosion")
 		tower_destroyed.emit()
-
 
 func repair():
 	health = max_health

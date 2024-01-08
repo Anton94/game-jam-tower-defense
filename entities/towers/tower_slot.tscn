@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bm7ytbd6aerxn"]
+[gd_scene load_steps=9 format=3 uid="uid://bm7ytbd6aerxn"]
 
 [ext_resource type="Texture2D" uid="uid://dvw3hr7iyr2c6" path="res://assets/towers/cannon/tier1/base_idle_00.png" id="1_ewe1w"]
 [ext_resource type="Script" path="res://entities/towers/tower_slot.gd" id="1_y88k1"]
 [ext_resource type="PackedScene" uid="uid://bhm0jmto8qnw5" path="res://ui/tower_popup.tscn" id="3_d18hb"]
 [ext_resource type="Texture2D" uid="uid://ss61ed6jjgov" path="res://assets/ui/turret buttons/repair.png" id="4_s6hwn"]
+[ext_resource type="Texture2D" uid="uid://dh8y5ayp5nrt3" path="res://assets/ui/turret buttons/upgrade.png" id="5_ljul7"]
 [ext_resource type="Texture2D" uid="uid://capnclxfkk2lx" path="res://assets/ui/turret buttons/replace.png" id="5_qshhm"]
 [ext_resource type="Texture2D" uid="uid://qst02smqv1uv" path="res://assets/ui/turret buttons/remove.png" id="6_r8luu"]
 
@@ -39,6 +40,10 @@ offset_bottom = 453.0
 layout_mode = 2
 icon = ExtResource("4_s6hwn")
 
+[node name="Upgrade" type="Button" parent="UI/TowerActions"]
+layout_mode = 2
+icon = ExtResource("5_ljul7")
+
 [node name="Exchange" type="Button" parent="UI/TowerActions"]
 layout_mode = 2
 icon = ExtResource("5_qshhm")
@@ -50,5 +55,6 @@ icon = ExtResource("6_r8luu")
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="tower_requested" from="UI/TowerPopup" to="." method="_on_tower_popup_tower_requested"]
 [connection signal="pressed" from="UI/TowerActions/Repair" to="." method="_on_repair_pressed"]
+[connection signal="pressed" from="UI/TowerActions/Upgrade" to="." method="_on_upgrade_pressed"]
 [connection signal="pressed" from="UI/TowerActions/Exchange" to="." method="_on_exchange_pressed"]
 [connection signal="pressed" from="UI/TowerActions/Sell" to="." method="_on_sell_pressed"]

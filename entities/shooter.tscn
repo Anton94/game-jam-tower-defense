@@ -186,7 +186,7 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_82hvp")
 
 [node name="LookAhead" type="RayCast2D" parent="."]
-target_position = Vector2(750, 2.08165e-12)
+target_position = Vector2(750, 0)
 collide_with_areas = true
 
 [node name="FireRateTimer" type="Timer" parent="."]

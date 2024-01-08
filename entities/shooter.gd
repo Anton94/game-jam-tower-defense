@@ -6,8 +6,8 @@ signal has_shot(reload_time: float)
 @export var fire_rate := 0.1
 @export var rot_speed := 5.0
 @export var projectile_type: PackedScene
-@export var projectile_speed := 1000
-@export var projectile_damage := 3
+@export var projectile_speed := 1000.0
+@export var projectile_damage := 3.0
 @export var projectile_spread := 0.0
 
 var targets: Array[Node2D]
@@ -19,6 +19,7 @@ var map: Node
 @onready var shoot_sound := $ShootSound as AudioStreamPlayer2D
 @onready var lookahead := $LookAhead as RayCast2D
 @onready var firerate_timer := $FireRateTimer as Timer
+@onready var detector_shape := $Detector/CollisionShape2D as CollisionShape2D
 
 func _ready():
 	map = find_parent("Map")
@@ -104,3 +105,15 @@ func _on_fire_rate_timer_timeout():
 func _on_gun_animation_finished():
 	if gun.animation.contains("shoot"):
 		_play_animations("idle")
+
+func upgrade(multiplier : float) -> void:
+	firerate_timer.wait_time = firerate_timer.wait_time * 1 / multiplier
+	rot_speed *= multiplier
+	projectile_speed *= multiplier
+	projectile_damage *= multiplier
+	#projectile_spread *= multiplier
+
+	var circle_shape = detector_shape.shape as CircleShape2D
+	if circle_shape:
+		circle_shape.radius *= multiplier
+		lookahead.target_position *= multiplier
