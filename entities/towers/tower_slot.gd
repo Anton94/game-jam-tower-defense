@@ -12,7 +12,8 @@ const PRICE_LABEL_PATH := "UI/TowerPopup/Background/Panel/Towers/%s/Label"
 var _towers_to_build := {
 	"gatling": preload("res://entities/towers/gatling_tower.tscn"),
 	"cannon": preload("res://entities/towers/cannon_tower.tscn"),
-	"missile": preload("res://entities/towers/missile_tower.tscn")
+	"missile": preload("res://entities/towers/missile_tower.tscn"),
+	"spray": preload("res://entities/towers/spray_tower.tscn")
 }
 var tower: Tower
 
