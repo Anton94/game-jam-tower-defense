@@ -6,6 +6,7 @@
 tower_type = "gatling"
 
 [node name="Shooter" parent="." index="2"]
+rot_speed = 20.0
 projectile_spread = 0.08
 
 [node name="Muzzle2" type="Marker2D" parent="Shooter/Gun" index="1"]
