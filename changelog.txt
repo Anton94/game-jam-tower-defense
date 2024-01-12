@@ -1,15 +1,15 @@
-- Refine the zooming. I think that the game feeling is better when you can see the whole fighting, not just a small square, so I increased the zoom out max value and fixed the zoom in to be to the mouse location. Extended the map, so the zoom out does not show the void around the map.
+- Refine the zooming. I think that the game feeling is better when you can see the whole fighting, not just a small square, so I increased the zoom-out max value and fixed the zoom-in to be to the mouse location. Extended the map, so the zoom-out does not show the void around the map.
 - Added bomb animation and die animation to the infantry units - they are kamikaze.
 - Added spawn buildings and proper Z index for the enemies to seem like they are getting out of them. Adjust the map for that.
 - Added different initial directions for the enemies to follow to the objective. That way all paths of the map are used.
-- Added suiside bomber with different color helicopter which targets only the base.
+- Added suicide bombers with a different color helicopter which targets only the base.
 - Added suicide tanks.
-- Disabled suidice bombers. I have to make some better animation for it but I have no time for it.
+- Disabled suicide bombers. I have to make some better animation but have no time for it.
 - Waves are waiting for all enemies from the current one to die before starting a new one.
 - Added upgrade option for the towers - increases the tower stats. Had to make a new asset.
 - Added cost/price labels for the tower upgrades/actions.
 - Added winning screen.
-- Added new type of tower. Which could shoot all enemy types but is expensive.
+- Added a new type of tower. Which could shoot all enemy types but is expensive.
 - Fixed tower upgrade region to not affect other towers of the same type - shared collision shape resource between instances of the towers.
 - Added increasing difficulty in waves. Made the probability of harder units bigger and more of them.
 
@@ -17,3 +17,4 @@ Not importnat:
 - TODO (optional) custom rockets as special powers on the map with countdown and upgrade them - probably too much work for now
 - TDOO fix the zoom out to not show the void outside of the map(when near the borders)
 - TODO statistics on exit screen for how many units have been killed
+- TODO disable tower upgrades after 5 levels or so

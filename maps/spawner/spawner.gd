@@ -56,8 +56,8 @@ func _start_wave():
 func _increase_difficulty():
 	# Inecrase the difficulty
 	enemies_per_wave_count *= 2
-	spawn_rate = max(0.2, spawn_rate * 0.7)
-	if current_wave < 6:
+	spawn_rate = max(0.2, spawn_rate * 0.6)
+	if current_wave < 8:
 		spawn_probabilities["infantry"] *= 0.9
 		spawn_probabilities["infantry2"] *= 0.9
 		spawn_probabilities["tank"] *= 1.1
