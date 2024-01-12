@@ -7,17 +7,16 @@ signal enemy_spawned(enemy: Enemy)
 signal enemies_defeated
 
 @export_range(0.5, 5.0, 0.5) var spawn_rate: float = 2.0
-@export var wave_count: int = 3
+@export var wave_count: int = 10
 @export var enemies_per_wave_count: int = 10
 @export var spawn_probabilities := {
-	"infantry": 50,
-	"infantry2": 30,
-	"tank": 5,
-	"helicopter": 5,
-	"suicide_craft": 0,
-	"suicide_tank": 5,
+	"infantry": 5000,
+	"infantry2": 3000,
+	"tank": 500,
+	"helicopter": 200,
+	"suicide_craft": 200,
+	"suicide_tank": 200,
 }
-
 
 var enemy_scenes := {
 	"infantry": preload("res://entities/enemies/infantry/infantry_t1.tscn"),
@@ -30,7 +29,7 @@ var enemy_scenes := {
 var spawn_locations := []
 var current_wave := 0
 var current_enemy_count := 0
-var _enemy_removed_count := 0
+var current_killed_enemies_count := 0
 
 @onready var wave_timer := $WaveTimer as Timer
 @onready var spawn_timer := $SpawnTimer as Timer
@@ -49,10 +48,20 @@ func _request_wave_start():
 
 func _start_wave():
 	current_wave += 1
-	spawn_timer.start()
 	current_enemy_count = 0
+	current_killed_enemies_count = 0
+	spawn_timer.start()
 	wave_started.emit(current_wave)
 
+func _increase_difficulty():
+	# Inecrase the difficulty
+	enemies_per_wave_count *= 1.5
+	spawn_probabilities["infantry"] *= 0.9
+	spawn_probabilities["infantry2"] *= 0.9
+	spawn_probabilities["tank"] *= 1.1
+	spawn_probabilities["helicopter"] *= 1.1
+	spawn_probabilities["suicide_craft"] *= 1.1
+	spawn_probabilities["suicide_tank"] *= 1.1
 
 func _end_wave():
 	pass
@@ -101,9 +110,11 @@ func _pick_enemy() -> String:
 
 
 func _on_enemy_removed():
-	_enemy_removed_count += 1
-	
-	if _enemy_removed_count == wave_count * enemies_per_wave_count:
-		enemies_defeated.emit()
-	elif _enemy_removed_count == current_wave * enemies_per_wave_count:
-		_request_wave_start()
+	current_killed_enemies_count += 1
+
+	if current_killed_enemies_count == enemies_per_wave_count:
+		if current_wave == wave_count:
+			enemies_defeated.emit()
+		else:
+			_increase_difficulty()
+			_request_wave_start()

@@ -107,13 +107,19 @@ func _on_gun_animation_finished():
 		_play_animations("idle")
 
 func upgrade(multiplier : float) -> void:
-	firerate_timer.wait_time = firerate_timer.wait_time * 1 / multiplier
+	var firerate_reduce_coeff = 1 / multiplier
+	firerate_timer.wait_time *= firerate_reduce_coeff
+	fire_rate *= firerate_reduce_coeff
+
+	firerate_timer.wait_time = max(firerate_timer.wait_time, 0.1)
+	fire_rate = max(fire_rate, 0.1)
+
 	rot_speed *= multiplier
 	projectile_speed *= multiplier
 	projectile_damage *= multiplier
 	#projectile_spread *= multiplier
 
-	var circle_shape = detector_shape.shape as CircleShape2D
+	var circle_shape = $Detector/CollisionShape2D.shape as CircleShape2D
 	if circle_shape:
 		circle_shape.radius *= multiplier
 		lookahead.target_position *= multiplier

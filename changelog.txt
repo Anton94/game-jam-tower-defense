@@ -10,8 +10,10 @@
 - Added cost/price labels for the tower upgrades/actions.
 - Added winning screen.
 - Added new type of tower. Which could shoot all enemy types but is expensive.
-- TODO statistics on exit screen for how many units have been killed
+- Fixed tower upgrade region to not affect other towers of the same type - shared collision shape resource between instances of the towers.
+- Added increasing difficulty in waves. Made the probability of harder units bigger and more of them.
 
 Not importnat:
 - TODO (optional) custom rockets as special powers on the map with countdown and upgrade them - probably too much work for now
 - TDOO fix the zoom out to not show the void outside of the map(when near the borders)
+- TODO statistics on exit screen for how many units have been killed

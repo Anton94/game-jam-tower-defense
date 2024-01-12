@@ -195,18 +195,17 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_21ve2"]
+resource_local_to_scene = true
 radius = 600.0
 
 [node name="CannonTower" instance=ExtResource("1_u77ig")]
-health = 150
 tower_type = "cannon"
 
 [node name="Shooter" parent="." index="2"]
 fire_rate = 2.5
 rot_speed = 2.5
 projectile_type = ExtResource("2_gakpf")
-projectile_speed = 800
-projectile_damage = 20
+projectile_damage = 20.0
 projectile_spread = 0.05
 
 [node name="Gun" parent="Shooter" index="0"]
