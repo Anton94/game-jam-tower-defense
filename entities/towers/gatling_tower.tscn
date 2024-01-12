@@ -4,6 +4,8 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s71ue"]
 resource_local_to_scene = true
+radius = 700.0
+
 [node name="GatlingTower" instance=ExtResource("1_y4l16")]
 tower_type = "gatling"
 

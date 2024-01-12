@@ -114,7 +114,7 @@ func upgrade(multiplier : float) -> void:
 	firerate_timer.wait_time = max(firerate_timer.wait_time, 0.1)
 	fire_rate = max(fire_rate, 0.1)
 
-	rot_speed *= multiplier
+	rot_speed = min(rot_speed * multiplier, 90)
 	projectile_speed *= multiplier
 	projectile_damage *= multiplier
 	#projectile_spread *= multiplier

@@ -8,7 +8,7 @@ signal enemies_defeated
 
 @export_range(0.5, 5.0, 0.5) var spawn_rate: float = 2.0
 @export var wave_count: int = 10
-@export var enemies_per_wave_count: int = 10
+@export var enemies_per_wave_count: int = 20
 @export var spawn_probabilities := {
 	"infantry": 5000,
 	"infantry2": 3000,
@@ -55,13 +55,15 @@ func _start_wave():
 
 func _increase_difficulty():
 	# Inecrase the difficulty
-	enemies_per_wave_count *= 1.5
-	spawn_probabilities["infantry"] *= 0.9
-	spawn_probabilities["infantry2"] *= 0.9
-	spawn_probabilities["tank"] *= 1.1
-	spawn_probabilities["helicopter"] *= 1.1
-	spawn_probabilities["suicide_craft"] *= 1.1
-	spawn_probabilities["suicide_tank"] *= 1.1
+	enemies_per_wave_count *= 2
+	spawn_rate = max(0.2, spawn_rate * 0.7)
+	if current_wave < 6:
+		spawn_probabilities["infantry"] *= 0.9
+		spawn_probabilities["infantry2"] *= 0.9
+		spawn_probabilities["tank"] *= 1.1
+		spawn_probabilities["helicopter"] *= 1.1
+		spawn_probabilities["suicide_craft"] *= 1.1
+		spawn_probabilities["suicide_tank"] *= 1.1
 
 func _end_wave():
 	pass
